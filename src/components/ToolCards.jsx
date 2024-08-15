@@ -37,8 +37,8 @@ const ToolCards = () => {
       <div className="tools-grid">
         <Link to="/pdf-to-excel" className="tool-card">
           <FileSpreadsheetIcon />
-          <h2>PDF to Excel</h2>
-          <p>Convert your PDF documents into editable Excel spreadsheets.</p>
+          <h2>PDF a Excel</h2>
+          <p>Convierte tus documentos PDF a hojas de cálculo editables.</p>
         </Link>
         
         {/*<Link to="/split-pdf" className="tool-card">
@@ -48,20 +48,20 @@ const ToolCards = () => {
         </Link>*/}
 
         <div className="tool-card coming-soon">
-          <CsvJsonIcon />
-          <h2>Split PDF</h2>
+          <ScissorsIcon />
+          <h2>Divide PDF</h2>
           <p>Próximamente</p>
         </div>
 
         <div className="tool-card coming-soon">
           <CsvJsonIcon />
-          <h2>CSV to JSON</h2>
+          <h2>CSV a JSON</h2>
           <p>Próximamente</p>
         </div>
 
         <div className="tool-card coming-soon">
           <CsvJsonIcon />
-          <h2>JSON to CSV</h2>
+          <h2>JSON a CSV</h2>
           <p>Próximamente</p>
         </div>
       </div>

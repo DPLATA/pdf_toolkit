@@ -14,8 +14,8 @@ const MenuBar = () => {
         </div>
         <div className="menu-items">
           <Link to="/" className="menu-item">Inicio</Link>
-          <Link to="/pricing" className="menu-item">Precios</Link>
-          <Link to="/about" className="menu-item">Acerca de</Link>
+          {/*<Link to="/pricing" className="menu-item">Precios</Link>
+          <Link to="/about" className="menu-item">Acerca de</Link>*/}
           {user ? (
             <>
               <Link to="/dashboard" className="menu-item">Perfil</Link>
