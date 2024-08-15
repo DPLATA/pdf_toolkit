@@ -1,99 +1,35 @@
-// App.jsx
+import React from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
-import React, { useState, useRef } from 'react'
-
+import MenuBar from './components/MenuBar'
+import Login from './components/Login'
+import Register from './components/Register'
+import Dashboard from './components/Dashboard'
+import PdfToExcel from './components/PdfToExcel'
+import ToolCards from './components/ToolCards'
+import SplitPdf from './components/SplitPdf'
+import ProtectedRoute from './components/ProtectedRoute'
+import { AuthProvider } from './AuthContext'
 
 function App() {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [isConverting, setIsConverting] = useState(false);
-  const fileInputRef = useRef(null);
-
-  const handleFileSelect = (event) => {
-    const file = event.target.files[0]
-    setSelectedFile(file)
-    console.log('Selected file:', file.name)
-  }
-
-  const handleSubmit = async () => {
-    if (!selectedFile) {
-      alert('Por favor, selecciona un archivo PDF primero.')
-      return
-    }
-
-    setIsConverting(true)
-
-    const formData = new FormData()
-    formData.append('file', selectedFile)
-
-    try {
-      const response = await fetch('https://api.transformadoc.com/pdf/convert-to-excel', {
-        method: 'POST',
-        body: formData,
-      })
-
-      if (response.ok) {
-        const blob = await response.blob()
-        const downloadUrl = window.URL.createObjectURL(blob)
-        const link = document.createElement('a')
-        link.href = downloadUrl
-        link.download = 'pdf_converted_excel.xlsx'
-        document.body.appendChild(link)
-        link.click()
-        link.remove()
-
-	// Clear file selection
-        setSelectedFile(null)
-        if (fileInputRef.current) {
-          fileInputRef.current.value = ''
-        }
-      } else {
-	const errorData = await response.json()
-        throw new Error(errorData.message || 'La conversión falló')
-      }
-    } catch (error) {
-      console.error('Error:', error)
-      alert(`Ocurrió un error durante la conversión. Por favor, intenta de nuevo. ${error.message}`)
-    } finally {
-      setIsConverting(false)
-    }
-  }
-
-return (
-    <div className="app">
-      <header className="header">
-        <h1>Convierte PDF a EXCEL</h1>
-        <p>Convierte tus estados de cuenta a hojas de cálculo</p>
-      </header>
-      <main className="main">
-        <div className="file-input-container">
-          <button className="file-input-button" onClick={() => document.getElementById('fileInput').click()}>
-            Seleccionar archivo PDF
-          </button>
-          <input
-            type="file"
-            id="fileInput"
-            accept=".pdf"
-            onChange={handleFileSelect}
-            style={{ display: 'none' }}
-          />
+  return (
+    <AuthProvider>
+      <Router>
+        <div className="app">
+          <MenuBar />
+          <Routes>
+            <Route path="/" element={<ToolCards />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/pdf-to-excel" element={<PdfToExcel />} />
+              <Route path="/split-pdf" element={<SplitPdf />} />
+            </Route>
+          </Routes>
         </div>
-        {selectedFile && (
-          <>
-            <p className="selected-file">Archivo seleccionado: {selectedFile.name}</p>
-            <button 
-              className="submit-button" 
-              onClick={handleSubmit} 
-              disabled={isConverting}
-            >
-              {isConverting ? 'Convirtiendo...' : 'Convertir a Excel'}
-            </button>
-            {isConverting && (
-              <p className="conversion-message">La conversión puede tardar hasta un minuto.</p>
-            )}
-          </>
-        )}
-      </main>
-    </div>
+      </Router>
+    </AuthProvider>
   )
 }
 
