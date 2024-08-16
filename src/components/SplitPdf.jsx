@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import './SplitPdf.css';
+import SplitPdfSidebar from './SplitPdfSidebar';
 
 const SplitPdf = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -12,7 +13,7 @@ const SplitPdf = () => {
     console.log('Selected file:', file.name);
   };
 
-  const handleSubmit = async () => {
+  const handleSplit = async ({ fromPage, toPage }) => {
     if (!selectedFile) {
       alert('Por favor, selecciona un archivo PDF primero.');
       return;
@@ -21,7 +22,7 @@ const SplitPdf = () => {
     setIsSplitting(true);
 
     // Placeholder for PDF splitting logic
-    console.log('PDF splitting logic will be implemented here');
+    console.log(`Splitting PDF from page ${fromPage} to page ${toPage}`);
 
     // Simulating an asynchronous operation
     setTimeout(() => {
@@ -36,39 +37,46 @@ const SplitPdf = () => {
 
   return (
     <div className="split-pdf-container">
-      <header className="header">
-        <h1>Divide archivos PDF</h1>
-        <p>Divide tus archivos PDF en documentos más pequeños</p>
-      </header>
-      <main className="main">
-        <div className="file-input-container">
-          <button className="file-input-button" onClick={() => fileInputRef.current.click()}>
-            Seleccionar archivo PDF
-          </button>
-          <input
-            type="file"
-            ref={fileInputRef}
-            accept=".pdf"
-            onChange={handleFileSelect}
-            style={{ display: 'none' }}
-          />
-        </div>
-        {selectedFile && (
-          <>
+      <div className="split-pdf-content">
+        <div className="split-pdf-main">
+          {!selectedFile ? (
+            <div className="file-input-container">
+              <button className="file-input-button" onClick={() => fileInputRef.current.click()}>
+                Seleccionar archivo PDF
+              </button>
+              <input
+                type="file"
+                ref={fileInputRef}
+                accept=".pdf"
+                onChange={handleFileSelect}
+                style={{ display: 'none' }}
+              />
+            </div>
+          ) : (
+            <>
+            <div className="file-input-container">
+              <button className="file-input-button" onClick={() => fileInputRef.current.click()}>
+                Seleccionar archivo PDF
+              </button>
+              <input
+                type="file"
+                ref={fileInputRef}
+                accept=".pdf"
+                onChange={handleFileSelect}
+                style={{ display: 'none' }}
+              />
+            </div>
             <p className="selected-file">Archivo seleccionado: {selectedFile.name}</p>
-            <button 
-              className="submit-button" 
-              onClick={handleSubmit} 
-              disabled={isSplitting}
-            >
-              {isSplitting ? 'Dividiendo...' : 'Dividir PDF'}
-            </button>
-            {isSplitting && (
-              <p className="splitting-message">La división puede tardar unos momentos.</p>
-            )}
-          </>
-        )}
-      </main>
+            </>
+          )}
+          {isSplitting && (
+            <p className="splitting-message">La división puede tardar unos momentos.</p>
+          )}
+        </div>
+        <div className="split-pdf-sidebar-container">
+          <SplitPdfSidebar onSplit={handleSplit} />
+        </div>
+      </div>
     </div>
   );
 };

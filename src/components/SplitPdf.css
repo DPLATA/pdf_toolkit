@@ -1,85 +1,160 @@
 .split-pdf-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-  }
-  
-  .header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .header h1 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 0.5rem;
-  }
-  
-  .header p {
-    font-size: 1rem;
-    color: #666;
-  }
-  
-  .main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 600px;
-  }
-  
-  .file-input-container {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-  
-  .file-input-button {
-    width: 100%;
-    padding: 0.75rem;
-    font-size: 1rem;
-    color: #ffffff;
-    background-color: #ff0000;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .file-input-button:hover {
-    background-color: #e60000;
-  }
-  
-  .selected-file {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    color: #333;
-  }
-  
-  .submit-button {
-    width: 100%;
-    padding: 0.75rem;
-    font-size: 1rem;
-    color: #ffffff;
-    background-color: #ff0000;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 1rem;
-  }
-  
-  .submit-button:hover {
-    background-color: #e60000;
-  }
-  
-  .submit-button:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-  }
-  
-  .splitting-message {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    color: #666;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.split-pdf-content {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+}
+
+.split-pdf-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.file-input-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.file-input-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: #ff0000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.file-input-button:hover {
+  background-color: #e60000;
+}
+
+.pdf-preview {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+
+.splitting-message {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.split-pdf-sidebar-container {
+  width: 300px;
+  flex-shrink: 0;
+}
+
+/* Sidebar Styles */
+.split-pdf-sidebar {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.sidebar-subtitle {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.range-mode {
+  margin-bottom: 1rem;
+}
+
+.range-mode-label {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.custom-ranges-btn {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  color: #333;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.custom-ranges-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.range-inputs {
+  margin-bottom: 1rem;
+}
+
+.range-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+}
+
+.input-row label {
+  width: 70px;
+  font-size: 0.9rem;
+}
+
+.page-input {
+  width: 60px;
+  padding: 0.25rem;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.split-btn {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: #ff0000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.split-btn:hover {
+  background-color: #e60000;
+}
