@@ -4,7 +4,7 @@ const SplitPdfSidebar = ({ onSplit }) => {
   const [fromPage, setFromPage] = useState(1);
   const [toPage, setToPage] = useState(1);
 
-  const handleSplit = () => {
+  const handleSplitClick = () => {
     onSplit({ fromPage, toPage });
   };
 
@@ -40,7 +40,7 @@ const SplitPdfSidebar = ({ onSplit }) => {
       </div>
       <button
         className="split-btn"
-        onClick={handleSplit}
+        onClick={handleSplitClick}
       >
         Split PDF
       </button>

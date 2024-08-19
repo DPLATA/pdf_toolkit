@@ -41,17 +41,11 @@ const ToolCards = () => {
           <p>Convierte tus documentos PDF a hojas de cálculo editables.</p>
         </Link>
         
-        {/*<Link to="/split-pdf" className="tool-card">
-          <ScissorsIcon />
-          <h2>Split PDF</h2>
-          <p>Divide your PDF files into smaller documents.</p>
-        </Link>*/}
-
-        <div className="tool-card coming-soon">
+        <Link to="/split-pdf" className="tool-card">
           <ScissorsIcon />
           <h2>Divide PDF</h2>
-          <p>Próximamente</p>
-        </div>
+          <p>Divide tus archivos PDF en documentos más pequeños.</p>
+        </Link>
 
         <div className="tool-card coming-soon">
           <CsvJsonIcon />

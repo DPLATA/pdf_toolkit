@@ -24,15 +24,38 @@ const SplitPdf = () => {
     // Placeholder for PDF splitting logic
     console.log(`Splitting PDF from page ${fromPage} to page ${toPage}`);
 
-    // Simulating an asynchronous operation
-    setTimeout(() => {
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+
+    try {
+      const response = await fetch(`https://api.transformadoc.com/pdf/split?start_page=${fromPage}&end_page=${toPage}`, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = 'split_pdf.pdf';
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+      } else {
+        throw new Error('PDF splitting failed');
+      }
+    } catch (error) {
+      console.error('Error splitting PDF:', error);
+      alert('An error occurred while splitting the PDF.');
+    } finally {
       setIsSplitting(false);
       setSelectedFile(null);
       if (fileInputRef.current) {
         fileInputRef.current.value = '';
       }
-      alert('PDF splitting completed successfully!');
-    }, 2000);
+    }
   };
 
   return (
