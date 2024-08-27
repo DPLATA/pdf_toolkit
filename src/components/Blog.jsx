@@ -19,7 +19,7 @@ const Blog = () => {
   useEffect(() => {
     const fetchBlogPosts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/blog/posts'); // Updated endpoint
+        const response = await fetch('https://api.transformadoc.com/blog/posts'); // Updated endpoint
         if (!response.ok) {
           throw new Error('Failed to fetch blog posts');
         }
