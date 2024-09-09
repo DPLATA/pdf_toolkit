@@ -5,7 +5,7 @@ import './LandingPage.css';
 const LandingPage = () => {
   const companyLogos = [
     { name: 'Driveline Baseball', logo: 'public/logo-driveline-768x254-1.png' },
-    { name: 'Company 2', logo: 'public/IMMET_logo.png' },
+    { name: 'IMMET', logo: 'public/IMMET_logo.png' },
     // Add more company logos as needed
   ];
 
