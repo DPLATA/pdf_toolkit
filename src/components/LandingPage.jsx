@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './LandingPage.css';
+import drivelineLogo from '/logo-driveline-768x254-1.png';
+import immetLogo from '/IMMET_logo.png';
 
 const LandingPage = () => {
   const companyLogos = [
-    { name: 'Driveline Baseball', logo: 'public/logo-driveline-768x254-1.png' },
-    { name: 'IMMET', logo: 'public/IMMET_logo.png' },
+    { name: 'Driveline Baseball', logo: drivelineLogo },
+    { name: 'IMMET', logo: immetLogo },
     // Add more company logos as needed
   ];
 
