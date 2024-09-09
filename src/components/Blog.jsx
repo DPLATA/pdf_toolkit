@@ -20,6 +20,7 @@ const Blog = () => {
     const fetchBlogPosts = async () => {
       try {
         const response = await fetch('https://api.transformadoc.com/blog/posts'); // Updated endpoint
+        //const response = await fetch('http://127.0.0.1:5000/blog/posts'); 
         if (!response.ok) {
           throw new Error('Failed to fetch blog posts');
         }
