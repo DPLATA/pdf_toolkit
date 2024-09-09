@@ -12,6 +12,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import { AuthProvider } from './AuthContext'
 import Blog from './components/Blog'
 import BlogPost from './components/BlogPost'
+import LandingPage from './components/LandingPage'
 
 
 function App() {
@@ -21,7 +22,8 @@ function App() {
         <div className="app">
           <MenuBar />
           <Routes>
-            <Route path="/" element={<ToolCards />} />
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/tools" element={<ToolCards />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/blog" element={<Blog />} />
