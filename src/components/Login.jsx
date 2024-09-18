@@ -53,6 +53,9 @@ const Login = () => {
         <p className="auth-links">
           No tienes una cuenta? <Link to="/register" className="auth-link">Regístrate</Link>
         </p>
+        <p className="email-validation-legend">
+          Recuerda: Debes validar tu correo electrónico antes de poder iniciar sesión.
+        </p>
         {/*<p className="auth-links">
           Forgot your password? <Link to="/reset-password" className="auth-link">Reset it here</Link>
         </p>*/}

@@ -70,3 +70,10 @@
   .auth-button:hover {
     background-color: #e60000;
   }
+
+  .email-validation-legend {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 15px;
+    color: #e60000;
+  }
